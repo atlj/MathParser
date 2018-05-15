@@ -112,6 +112,9 @@ class parser(object):
             while "(" in data:
                 data = self.process_pharantesis(data)
         result = self.process(data)
+        result = float(result)
+        if result%1 == 0:
+            result = int(result)
         print("Islem sonucu: {}".format(str(result)))
 
     def control(self, data):#error throwing
