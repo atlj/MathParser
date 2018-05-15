@@ -7,6 +7,9 @@ class parser(object):
     def clear_whitespace(self, data):
         return data.replace(" ", "")
 
+    def clear_twominus(self, data):
+        return data.replace("--", "+")
+
     def process(self, token):#her token 3 elemandan olusmali
         chunks = [""]
         for char in token:
@@ -114,6 +117,7 @@ class parser(object):
         if not self.control(data):
             return False
         data = self.clear_whitespace(data)
+        data = self.clear_twominus(data)
         if "(" in data:
             while "(" in data:
                 data = self.process_pharantesis(data)
