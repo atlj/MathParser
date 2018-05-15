@@ -1,3 +1,4 @@
+import os#cikis yapmak icin
 class parser(object):
     def __init__(self):
         self.operators = ["*", "/", "+", "-"]#islem onceligi
@@ -143,4 +144,17 @@ class parser(object):
                     "/":lambda x, y: x/y}
         return switches[case]
 
-
+def main():
+    obj = parser()
+    os.system("clear")
+    print("\n\n\tMath Parser\n\tCreated By:Atlj\n\tgithub.com/atlj\n\n")
+    while 1:
+        inp = input("Lutfen Islenecek Veriyi Giriniz>> ")
+        obj.handle(inp)
+        print("\n")
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nCikiliyor")
+        os._exit(0)
