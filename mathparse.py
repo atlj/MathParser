@@ -38,7 +38,8 @@ class parser(object):
                     liste += "-"
                     liste.reverse()
                     chunks[chunks.index("-")+1]= "".join(liste)
-                    chunks[chunks.index("-")] = "+"
+                    if not chunks[0] == "-":
+                        chunks[chunks.index("-")] = "+"
                 else:
                     liste.pop()
                     liste.reverse()
@@ -47,6 +48,7 @@ class parser(object):
 
         index = 0
         remlist = []
+
 
         for idx in chunks:
             if chunks[index] == "+":
@@ -87,6 +89,10 @@ class parser(object):
             if idx == "/" and chunks[index + 1] == "/":
                 return False
             index += 1
+
+        if chunks[0] == "":
+            del chunks[0]
+            del chunks[0]
         for op in self.operators:
             while not chunks.count(op) == 0:
                 index = 0
